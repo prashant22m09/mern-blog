@@ -8,7 +8,7 @@ export default function CallToAction() {
                 Want to learn more about JavaScript?
             </h2>
             <p className='text-gray-500 my-2'>
-                Checkout these resources with 100 JavaScript Projects
+                Checkout these JavaScript Projects
             </p>
             <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
                 <a href="#" target='_blank' rel='noopener noreferrer'>
