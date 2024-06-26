@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 
+//functional component
+//It takes children as a prop, which allows it to render nested components.
 export default function ThemeProvider({ children }) {
   const { theme } = useSelector((state) => state.theme);
   return (

@@ -38,7 +38,7 @@ export const getposts = async (req, res, next) => {
       ...(req.query.postId && { _id: req.query.postId }),
       ...(req.query.searchTerm && {
         $or: [
-          { title: { $regex: req.query.searchTerm, $options: 'i' } },
+          { title: { $regex: req.query.searchTerm, $options: 'i' } },// i means lowercase or uppercase not important
           { content: { $regex: req.query.searchTerm, $options: 'i' } },
         ],
       }),
@@ -58,7 +58,7 @@ export const getposts = async (req, res, next) => {
     );
 
     const lastMonthPosts = await Post.countDocuments({
-      createdAt: { $gte: oneMonthAgo },
+      createdAt: { $gte: oneMonthAgo },// selects greater or equal from provided field
     });
 
     res.status(200).json({

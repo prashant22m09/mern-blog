@@ -14,13 +14,13 @@ const persistConfig = {
   storage,
   version: 1,
 };
-
+// to enable persistence of the Redux state across sessions
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware({ serializableCheck: false }),// to prevent warnings from redux middlewares
 });
 
 export const persistor = persistStore(store);

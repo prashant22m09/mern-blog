@@ -26,6 +26,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
@@ -37,10 +38,13 @@ app.use('/api/comment', commentRoutes);
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
+//catch-all route to serve the SPA’s index.html
+// Server Fallback: When the browser initially requests a route, if it does not match any server-side route (e.g., API endpoints), the server should send back the index.html file. This file contains the main structure of your SPA and the JavaScript code that handles client-side routing.
 app.get('*', (req, res) => {
  res.sendFile(path.join(__dirname, 'client', 'dist','index.html'));
 });
 
+//global error handling middleware
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';
